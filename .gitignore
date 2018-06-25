@@ -1,6 +1,7 @@
 # Created by https://www.gitignore.io/api/macos,kotlin,androidstudio
 
 ### AndroidStudio ###
+
 # Covers files to be ignored for android development using Android Studio.
 
 # Built application files
@@ -82,6 +83,9 @@ obj/
 .idea/sqlDataSources.xml
 .idea/dynamic.xml
 .idea/uiDesigner.xml
+.idea/gradle.xml
+.idea/runConfigurations.xml
+.idea/codeStyles/Project.xml
 
 # OS-specific files
 .DS_Store
