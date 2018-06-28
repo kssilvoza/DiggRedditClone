@@ -1,4 +1,4 @@
-package com.silvozatechnologies.diggredditclone.common.extension
+package com.silvozatechnologies.diggredditclone.common.utility
 
 import java.lang.StringBuilder
 import java.security.SecureRandom

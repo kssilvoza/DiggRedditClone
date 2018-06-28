@@ -1,11 +1,10 @@
 package com.silvozatechnologies.diggredditclone.data.repository
 
-import com.silvozatechnologies.diggredditclone.common.extension.generateRandomAlphanumericString
+import com.silvozatechnologies.diggredditclone.common.utility.generateRandomAlphanumericString
 import com.silvozatechnologies.diggredditclone.data.model.Topic
 
-private const val ID_LENGTH = 40
-
 class TopicRepository {
+
     private val topicsMap = HashMap<String, Topic>()
     private val topicsList = ArrayList<Topic>()
 
@@ -13,21 +12,21 @@ class TopicRepository {
         val id = generateId()
         val topic = Topic(id = id, topicName = topicName, votes = 0)
         topicsMap[id] = topic
-        topicsList.add(topic)
+        topicsList.add(element = topic)
     }
 
     fun upvoteTopic(id: String) {
         val topic = topicsMap[id]
         if (topic != null) {
-            
+
         }
     }
 
     private fun generateId() : String {
         var id: String
         do {
-            id = generateRandomAlphanumericString(ID_LENGTH)
-        } while (topicsMap.containsKey(id))
+            id = generateRandomAlphanumericString(length = 40)
+        } while (topicsMap.containsKey(key = id))
         return id
     }
 }
