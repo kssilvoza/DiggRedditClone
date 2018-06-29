@@ -18,6 +18,6 @@ class TopicsActivity : AppCompatActivity() {
     }
 
     private fun onAddButtonClicked() {
-
+        
     }
 }

@@ -34,6 +34,6 @@ class TopicsAdapter : RecyclerView.Adapter<TopicsAdapter.ViewHolder>() {
     }
 
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        
+
     }
 }
