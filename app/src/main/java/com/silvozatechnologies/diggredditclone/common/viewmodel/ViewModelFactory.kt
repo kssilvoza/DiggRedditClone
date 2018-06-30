@@ -18,7 +18,7 @@ import javax.inject.Provider
  * Explanation on how this works:
  * https://blog.kotlin-academy.com/understanding-dagger-2-multibindings-viewmodel-8418eb372848
  */
-class ViewModelFactory @Inject constructor(private val creators: Map<Class<out ViewModel>, Provider<ViewModel>>) : ViewModelProvider.Factory {
+class ViewModelFactory @Inject constructor(private val creators: Map<Class<out ViewModel>, @JvmSuppressWildcards Provider<ViewModel>>) : ViewModelProvider.Factory {
     override fun <T : ViewModel?> create(modelClass: Class<T>): T {
         var creator: Provider<ViewModel>? = creators[modelClass]
         if (creator == null) {

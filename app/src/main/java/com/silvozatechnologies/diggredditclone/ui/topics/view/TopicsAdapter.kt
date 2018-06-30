@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import com.silvozatechnologies.diggredditclone.R
 import com.silvozatechnologies.diggredditclone.data.model.Topic
+import kotlinx.android.synthetic.main.item_topic.view.*
 
 class TopicsAdapter : RecyclerView.Adapter<TopicsAdapter.ViewHolder>() {
     private var topics = mutableListOf<Topic>()
@@ -17,7 +18,7 @@ class TopicsAdapter : RecyclerView.Adapter<TopicsAdapter.ViewHolder>() {
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        holder.setTopic(topics[position])
     }
 
     override fun getItemCount(): Int {
@@ -34,6 +35,9 @@ class TopicsAdapter : RecyclerView.Adapter<TopicsAdapter.ViewHolder>() {
     }
 
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-
+        fun setTopic(topic: Topic) {
+            itemView.textview_name.text = topic.topicName
+            itemView.textview_votes.text = "${topic.votes}"
+        }
     }
 }
