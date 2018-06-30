@@ -36,7 +36,20 @@ class TopicRepository {
     }
 
     private fun updateTopicsObservable() {
-        topics = topicsMap.values.sortedWith(compareBy({ it.votes }, { it.lastUpdated }))
+        topics = topicsMap.values.sortedWith(Comparator {
+            o1, o2 ->
+                if (o1.votes > o2.votes) {
+                    -1
+                } else if (o1.votes == o2.votes) {
+                    if (o1.lastUpdated > o2.lastUpdated) {
+                        -1
+                    } else {
+                        1
+                    }
+                } else {
+                    1
+                }
+        })
         topicsObservable.onNext(topics)
     }
 
