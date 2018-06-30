@@ -21,6 +21,16 @@ class TopicsActivity : AppCompatActivity() {
 
     private lateinit var viewModel: TopicsViewModel
 
+    private val listener = object : TopicsAdapter.Listener {
+        override fun onUpvoteClicked(topic: Topic) {
+            viewModel.upvoteTopic(topic)
+        }
+
+        override fun onDownvoteClicked(topic: Topic) {
+            viewModel.downvoteTopic(topic)
+        }
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         AndroidInjection.inject(this)
         super.onCreate(savedInstanceState)
@@ -36,7 +46,7 @@ class TopicsActivity : AppCompatActivity() {
     }
 
     private fun initializeRecyclerView() {
-        topicsAdapter = TopicsAdapter()
+        topicsAdapter = TopicsAdapter(listener)
         recyclerview.layoutManager = LinearLayoutManager(this)
         recyclerview.adapter = topicsAdapter
     }

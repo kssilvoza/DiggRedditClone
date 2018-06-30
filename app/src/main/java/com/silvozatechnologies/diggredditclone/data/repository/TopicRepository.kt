@@ -1,5 +1,6 @@
 package com.silvozatechnologies.diggredditclone.data.repository
 
+import android.util.Log
 import com.silvozatechnologies.diggredditclone.common.utility.generateRandomAlphanumericString
 import com.silvozatechnologies.diggredditclone.data.model.Topic
 import io.reactivex.subjects.PublishSubject
@@ -22,6 +23,14 @@ class TopicRepository {
         val topic = topicsMap[id]
         if (topic != null) {
             topic.votes = topic.votes + 1
+            updateTopicsObservable()
+        }
+    }
+
+    fun downvoteTopic(id: String) {
+        val topic = topicsMap[id]
+        if (topic != null && topic.votes > 0) {
+            topic.votes = topic.votes - 1
             updateTopicsObservable()
         }
     }

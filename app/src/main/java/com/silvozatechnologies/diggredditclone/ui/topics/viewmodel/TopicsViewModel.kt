@@ -25,6 +25,14 @@ class TopicsViewModel @Inject constructor(private val topicsRepository: TopicRep
         topicsRepository.addTopic(topicName)
     }
 
+    fun upvoteTopic(topic: Topic) {
+        topicsRepository.upvoteTopic(topic.id)
+    }
+
+    fun downvoteTopic(topic: Topic) {
+        topicsRepository.downvoteTopic(topic.id)
+    }
+
     private fun onTopicsChanged(topics: List<Topic>) {
         this.topics.value = topics
     }
