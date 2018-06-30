@@ -15,8 +15,9 @@
 
     <TextView
         android:id="@+id/button_upvote"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="0dp"
+        android:layout_height="30dp"
+        android:gravity="center"
         android:textSize="@dimen/text_small"
         android:text="Up"
         app:layout_constraintTop_toTopOf="parent"
@@ -29,6 +30,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/spacing_extra_small"
         android:textSize="@dimen/text_normal"
+        android:gravity="center_horizontal"
         tools:text="1.2k"
         app:layout_constraintTop_toBottomOf="@+id/button_upvote"
         app:layout_constraintLeft_toLeftOf="parent"
@@ -36,9 +38,10 @@
 
     <TextView
         android:id="@+id/button_downvote"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="0dp"
+        android:layout_height="30dp"
         android:layout_marginTop="@dimen/spacing_extra_small"
+        android:gravity="center"
         android:textSize="@dimen/text_small"
         android:text="Down"
         app:layout_constraintTop_toBottomOf="@+id/textview_votes"

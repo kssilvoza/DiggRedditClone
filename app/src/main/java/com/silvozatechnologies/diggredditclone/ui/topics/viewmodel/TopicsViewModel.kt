@@ -11,6 +11,8 @@ import io.reactivex.schedulers.Schedulers
 import javax.inject.Inject
 
 class TopicsViewModel @Inject constructor(private val topicsRepository: TopicRepository) : ViewModel() {
+    val TOPIC_NAME_MAX_LENGTH = 255
+
     var topics = MutableLiveData<List<Topic>>()
 
     private var disposable: Disposable

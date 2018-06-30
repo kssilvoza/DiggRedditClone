@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">DiggRedditClone</string>
+    
+    <string name="button_add">Add</string>
+    <string name="button_cancel">Cancel</string>
+    
+    <string name="add_topic_dialog_title">Add Topic</string>
+    <string name="add_topic_dialog_hint">Topic Name</string>
 </resources>
