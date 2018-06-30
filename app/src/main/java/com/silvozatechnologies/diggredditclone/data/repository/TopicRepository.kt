@@ -1,12 +1,11 @@
 package com.silvozatechnologies.diggredditclone.data.repository
 
-import android.util.Log
 import com.silvozatechnologies.diggredditclone.common.utility.generateRandomAlphanumericString
 import com.silvozatechnologies.diggredditclone.data.model.Topic
 import io.reactivex.subjects.PublishSubject
 
 class TopicRepository {
-    val topicsObservable = PublishSubject.create<List<Topic>>()
+    val topicsObservable: PublishSubject<List<Topic>> = PublishSubject.create<List<Topic>>()
 
     private val topicsMap = mutableMapOf<String, Topic>()
     private var topics = listOf<Topic>()
@@ -41,11 +40,7 @@ class TopicRepository {
                 if (o1.votes > o2.votes) {
                     -1
                 } else if (o1.votes == o2.votes) {
-                    if (o1.lastUpdated > o2.lastUpdated) {
-                        -1
-                    } else {
-                        1
-                    }
+                    if (o1.lastUpdated > o2.lastUpdated) -1 else 1
                 } else {
                     1
                 }

@@ -12,6 +12,7 @@ import javax.inject.Inject
 
 class TopicsViewModel @Inject constructor(private val topicsRepository: TopicRepository) : ViewModel() {
     val TOPIC_NAME_MAX_LENGTH = 255
+    val TOPICS_MAX_COUNT = 20
 
     var topics = MutableLiveData<List<Topic>>()
 
@@ -19,6 +20,9 @@ class TopicsViewModel @Inject constructor(private val topicsRepository: TopicRep
 
     init {
         disposable = topicsRepository.topicsObservable
+                .map {
+                    it.take(TOPICS_MAX_COUNT)
+                }
                 .subscribeOn(AndroidSchedulers.mainThread())
                 .subscribe(this::onTopicsChanged)
     }
