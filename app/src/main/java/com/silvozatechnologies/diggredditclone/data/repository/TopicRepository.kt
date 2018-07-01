@@ -14,8 +14,8 @@ import io.reactivex.subjects.ReplaySubject
  *
  * Since there is only have one data source (memory), it would be best to put data handling in this class
  */
-class TopicRepository {
-    val topicsObservable: ReplaySubject<List<Topic>> = ReplaySubject.create<List<Topic>>()
+open class TopicRepository {
+    var topicsObservable: ReplaySubject<List<Topic>> = ReplaySubject.create<List<Topic>>()
 
     var topicsMap = mutableMapOf<String, Topic>()
 
