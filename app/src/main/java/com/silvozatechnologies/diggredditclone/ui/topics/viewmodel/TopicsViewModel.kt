@@ -10,6 +10,9 @@ import io.reactivex.disposables.Disposable
 import io.reactivex.schedulers.Schedulers
 import javax.inject.Inject
 
+/*
+ * ViewModel for the TopicsActivity. Business logic for topics display and adding goes here
+ */
 class TopicsViewModel @Inject constructor(private val topicsRepository: TopicRepository) : ViewModel() {
     val TOPIC_NAME_MAX_LENGTH = 255
     val TOPICS_MAX_COUNT = 20
@@ -21,6 +24,7 @@ class TopicsViewModel @Inject constructor(private val topicsRepository: TopicRep
     init {
         disposable = topicsRepository.topicsObservable
                 .map {
+                    // This takes the 20 most upvoted topics from the repository to be displayed in the Activity/View
                     it.take(TOPICS_MAX_COUNT)
                 }
                 .subscribeOn(AndroidSchedulers.mainThread())
@@ -28,7 +32,10 @@ class TopicsViewModel @Inject constructor(private val topicsRepository: TopicRep
     }
 
     fun addTopic(topicName: String) {
-        topicsRepository.addTopic(topicName)
+        // This limits the topic name to 255 characters just in case the character limit in the View does not work properly
+        if (topicName.length > TOPIC_NAME_MAX_LENGTH) {
+            topicsRepository.addTopic(topicName)
+        }
     }
 
     fun upvoteTopic(topic: Topic) {

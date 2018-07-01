@@ -4,6 +4,16 @@ import com.silvozatechnologies.diggredditclone.common.utility.generateRandomAlph
 import com.silvozatechnologies.diggredditclone.data.model.Topic
 import io.reactivex.subjects.PublishSubject
 
+/*
+ * This class follows the repository pattern. Since we do not care where the data is coming from,
+ * the repository abstracts the data source whether it is from API or local storage
+ *
+ * In a production scenario where APIs and local storage is used, this class should have instances
+ * to an TopicsApi class for fetching topics from a server as well as a TopicsDao for
+ * getting/storing topics from/to the database.
+ *
+ * Since there is only have one data source (memory), it would be best to put data handling in this class
+ */
 class TopicRepository {
     val topicsObservable: PublishSubject<List<Topic>> = PublishSubject.create<List<Topic>>()
 
@@ -22,6 +32,7 @@ class TopicRepository {
         val topic = topicsMap[id]
         if (topic != null) {
             topic.votes = topic.votes + 1
+            topic.lastUpdated = System.currentTimeMillis()
             updateTopicsObservable()
         }
     }
@@ -30,10 +41,15 @@ class TopicRepository {
         val topic = topicsMap[id]
         if (topic != null && topic.votes > 0) {
             topic.votes = topic.votes - 1
+            topic.lastUpdated = System.currentTimeMillis()
             updateTopicsObservable()
         }
     }
 
+    /*
+     * Obtains the values from the HashMap and sorts them according to number of votes. In case of
+     * a tie, it is sorted from newest to oldest (updated)
+     */
     private fun updateTopicsObservable() {
         topics = topicsMap.values.sortedWith(Comparator {
             o1, o2 ->
