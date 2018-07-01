@@ -3,6 +3,7 @@ package com.silvozatechnologies.diggredditclone.data.repository
 import com.silvozatechnologies.diggredditclone.common.utility.generateRandomAlphanumericString
 import com.silvozatechnologies.diggredditclone.data.model.Topic
 import io.reactivex.subjects.PublishSubject
+import io.reactivex.subjects.ReplaySubject
 
 /*
  * This class follows the repository pattern. Since we do not care where the data is coming from,
@@ -15,7 +16,7 @@ import io.reactivex.subjects.PublishSubject
  * Since there is only have one data source (memory), it would be best to put data handling in this class
  */
 class TopicRepository {
-    val topicsObservable: PublishSubject<List<Topic>> = PublishSubject.create<List<Topic>>()
+    val topicsObservable: ReplaySubject<List<Topic>> = ReplaySubject.create<List<Topic>>()
 
     private val topicsMap = mutableMapOf<String, Topic>()
     private var topics = listOf<Topic>()

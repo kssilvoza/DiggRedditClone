@@ -52,7 +52,7 @@ class TopicsActivity : AppCompatActivity() {
     }
 
     private fun initializeRecyclerView() {
-        topicsAdapter = TopicsAdapter(listener)
+        topicsAdapter = TopicsAdapter(lifecycleOwner = this, listener = listener)
         recyclerview.layoutManager = LinearLayoutManager(this)
         recyclerview.adapter = topicsAdapter
     }

@@ -38,7 +38,7 @@ class TopicsViewModel @Inject constructor(private val topicsRepository: TopicRep
 
     fun addTopic(topicName: String) {
         // This limits the topic name to 255 characters just in case the character limit in the View does not work properly
-        if (topicName.length > TOPIC_NAME_MAX_LENGTH) {
+        if (topicName.length <= TOPIC_NAME_MAX_LENGTH) {
             topicsRepository.addTopic(topicName)
         }
     }
