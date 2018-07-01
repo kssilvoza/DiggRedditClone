@@ -2,7 +2,6 @@ package com.silvozatechnologies.diggredditclone.data.repository
 
 import com.silvozatechnologies.diggredditclone.common.utility.generateRandomAlphanumericString
 import com.silvozatechnologies.diggredditclone.data.model.Topic
-import io.reactivex.subjects.PublishSubject
 import io.reactivex.subjects.ReplaySubject
 
 /*
@@ -19,7 +18,6 @@ class TopicRepository {
     val topicsObservable: ReplaySubject<List<Topic>> = ReplaySubject.create<List<Topic>>()
 
     var topicsMap = mutableMapOf<String, Topic>()
-    private var topics = listOf<Topic>()
 
     fun addTopic(topicName: String) : String {
         val id = generateId()
@@ -53,7 +51,7 @@ class TopicRepository {
      * a tie, it is sorted from newest to oldest (updated)
      */
     private fun updateTopicsObservable() {
-        topics = topicsMap.values.sortedWith(Comparator {
+        val sortedTopics = topicsMap.values.sortedWith(Comparator {
             o1, o2 ->
                 if (o1.votes > o2.votes) {
                     -1
@@ -63,7 +61,7 @@ class TopicRepository {
                     1
                 }
         })
-        topicsObservable.onNext(topics)
+        topicsObservable.onNext(sortedTopics)
     }
 
     private fun generateId() : String {
