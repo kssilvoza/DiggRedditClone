@@ -13,7 +13,7 @@ https://stackoverflow.com/questions/41107/how-to-generate-a-random-alpha-numeric
  */
 fun generateRandomAlphanumericString(length: Int) : String {
     val stringBuilder = StringBuilder()
-    for (i in 0..length) {
+    for (i in 1..length) {
         stringBuilder.append(ALPHANUMERIC[secureRandom.nextInt(ALPHANUMERIC.length)])
     }
     return stringBuilder.toString()
