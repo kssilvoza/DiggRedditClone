@@ -18,15 +18,16 @@ import io.reactivex.subjects.ReplaySubject
 class TopicRepository {
     val topicsObservable: ReplaySubject<List<Topic>> = ReplaySubject.create<List<Topic>>()
 
-    private val topicsMap = mutableMapOf<String, Topic>()
+    var topicsMap = mutableMapOf<String, Topic>()
     private var topics = listOf<Topic>()
 
-    fun addTopic(topicName: String) {
+    fun addTopic(topicName: String) : String {
         val id = generateId()
         val lastUpdated = System.currentTimeMillis()
         val topic = Topic(id = id, topicName = topicName, votes = 0, lastUpdated = lastUpdated)
         topicsMap[id] = topic
         updateTopicsObservable()
+        return id
     }
 
     fun upvoteTopic(id: String) {

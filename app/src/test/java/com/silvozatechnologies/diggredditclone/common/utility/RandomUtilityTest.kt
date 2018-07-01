@@ -13,15 +13,7 @@ class RandomUtilityTest {
     @Test
     fun generateRandomAlphanumericString_shouldBeAlphanumeric() {
         val randomAlphanumericString = generateRandomAlphanumericString(length = 20)
-        var isAlphaNumeric = true
-        for (i in 0 until randomAlphanumericString.length) {
-            val char = randomAlphanumericString[i]
-            if (!Character.isLetter(char) && !Character.isDigit(char)) {
-                isAlphaNumeric = false
-                break
-            }
-        }
-        assert(isAlphaNumeric)
+        assert(isAlphaNumeric(randomAlphanumericString))
     }
 
     @Test
@@ -33,5 +25,17 @@ class RandomUtilityTest {
         assert(randomAlphanumericString1 != randomAlphanumericString2 &&
                 randomAlphanumericString2 != randomAlphanumericString3 &&
                 randomAlphanumericString3 != randomAlphanumericString1)
+    }
+
+    private fun isAlphaNumeric(string: String) : Boolean {
+        var isAlphaNumeric = true
+        for (i in 0 until string.length) {
+            val char = string[i]
+            if (!Character.isLetter(char) && !Character.isDigit(char)) {
+                isAlphaNumeric = false
+                break
+            }
+        }
+        return isAlphaNumeric
     }
 }
