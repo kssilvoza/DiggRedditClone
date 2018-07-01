@@ -6,7 +6,7 @@ import io.reactivex.subjects.PublishSubject
 
 /*
  * This class follows the repository pattern. Since we do not care where the data is coming from,
- * the repository abstracts the data source whether it is from API or local storage
+ * the repository should abstracts the data source.
  *
  * In a production scenario where APIs and local storage is used, this class should have instances
  * to an TopicsApi class for fetching topics from a server as well as a TopicsDao for

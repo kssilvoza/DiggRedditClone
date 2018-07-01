@@ -31,6 +31,11 @@ class TopicsViewModel @Inject constructor(private val topicsRepository: TopicRep
                 .subscribe(this::onTopicsChanged)
     }
 
+    override fun onCleared() {
+        super.onCleared()
+        disposable.dispose()
+    }
+
     fun addTopic(topicName: String) {
         // This limits the topic name to 255 characters just in case the character limit in the View does not work properly
         if (topicName.length > TOPIC_NAME_MAX_LENGTH) {
