@@ -19,12 +19,17 @@ class TopicsViewModel @Inject constructor(private val topicsRepository: TopicRep
     private var disposable: Disposable
 
     init {
-        disposable = topicsRepository.topicsObservable
+        disposable = topicsRepository.observeTopics()
                 .map {
                     it.take(TOPICS_MAX_COUNT)
                 }
                 .subscribeOn(AndroidSchedulers.mainThread())
                 .subscribe(this::onTopicsChanged)
+    }
+
+    override fun onCleared() {
+        super.onCleared()
+        disposable.dispose()
     }
 
     fun addTopic(topicName: String) {

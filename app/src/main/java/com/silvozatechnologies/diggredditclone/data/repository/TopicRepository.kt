@@ -2,13 +2,18 @@ package com.silvozatechnologies.diggredditclone.data.repository
 
 import com.silvozatechnologies.diggredditclone.common.utility.generateRandomAlphanumericString
 import com.silvozatechnologies.diggredditclone.data.model.Topic
-import io.reactivex.subjects.PublishSubject
+import io.reactivex.subjects.ReplaySubject
+import java.util.*
 
 class TopicRepository {
-    val topicsObservable: PublishSubject<List<Topic>> = PublishSubject.create<List<Topic>>()
+    val topicsObservable: ReplaySubject<List<Topic>> = ReplaySubject.create<List<Topic>>()
 
-    private val topicsMap = mutableMapOf<String, Topic>()
-    private var topics = listOf<Topic>()
+    val topicsMap = mutableMapOf<String, Topic>()
+    var topics = listOf<Topic>()
+
+    fun observeTopics() : ReplaySubject<List<Topic>> {
+        return topicsObservable
+    }
 
     fun addTopic(topicName: String) {
         val id = generateId()
