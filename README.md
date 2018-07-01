@@ -17,7 +17,8 @@ This project follows the Model-View-ViewModel architecture because of the follow
 3. The two reasons above makes this application more unit testable
 4. Android has developed a set of libraries that enables this Architecture (Android Architecture Components, specifically the `ViewModel` class)
 
-Shown below is an 
+Shown below is an illustration of the MVVM architecture of the application
+![alt text](https://github.com/kssilvoza/DiggRedditClone/blob/dev/markdown/DiggRedditClone_MVVM_Architecture.png "Architecture")
 
 #### Data Structure
 The structure used by `TopicRepository` in storing the topics is a `HashMap` with the `topicId` as its key and a `Topic` as its value. This structure is used because adding and searching for a Topic in the `HashMap` will have O(1) complexity. 
