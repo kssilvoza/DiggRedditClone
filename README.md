@@ -10,6 +10,15 @@ This project is an Android application that mimics the functionality of news agg
 * __RxJava and RxAndroid__ - A library for composing asychronous and event-based applications.
 * __ConstraintLayout__ - Flexible ViewGroup that helps in creating flat view hierarchies
 
+#### Architecture
+This project follows the Model-View-ViewModel architecture because of the following reasons:
+1. This architecture separates the business logic from the UI thus allowing single responsibility. 
+2. It decouples the ViewModel and the View since the former does not need to keep a reference to the latter.
+3. The two reasons above makes this application more unit testable
+4. Android has developed a set of libraries that enables this Architecture (Android Architecture Components, specifically the `ViewModel` class)
+
+Shown below is an 
+
 #### Data Structure
 The structure used by `TopicRepository` in storing the topics is a `HashMap` with the `topicId` as its key and a `Topic` as its value. This structure is used because adding and searching for a Topic in the `HashMap` will have O(1) complexity. 
 
