@@ -4,11 +4,11 @@ import android.arch.lifecycle.MutableLiveData
 import com.silvozatechnologies.diggredditclone.data.model.Topic
 import java.text.DecimalFormat
 
-private const val ONE_BILLION = 1000000000
-private const val ONE_MILLION = 1000000
-private const val ONE_THOUSAND = 1000
-
 class TopicItemViewModel {
+    private val ONE_BILLION = 1000000000
+    private val ONE_MILLION = 1000000
+    private val ONE_THOUSAND = 1000
+
     lateinit var topic: Topic
 
     val topicName = MutableLiveData<String>()
@@ -21,15 +21,15 @@ class TopicItemViewModel {
         val decimalFormat = DecimalFormat("#.#")
         val voteString = when {
             topic.votes >= ONE_BILLION -> {
-                val quotient = topic.votes / ONE_BILLION * 1.0f
+                val quotient = 1.0f * topic.votes / ONE_BILLION
                 "${decimalFormat.format(quotient)}B"
             }
             topic.votes >= ONE_MILLION -> {
-                val quotient = topic.votes / ONE_MILLION * 1.0f
+                val quotient = 1.0f * topic.votes / ONE_MILLION
                 "${decimalFormat.format(quotient)}M"
             }
             topic.votes >= ONE_THOUSAND -> {
-                val quotient = topic.votes / ONE_THOUSAND * 1.0f
+                val quotient = 1.0f * topic.votes / ONE_THOUSAND
                 "${decimalFormat.format(quotient)}K"
             }
             else -> "${topic.votes}"
