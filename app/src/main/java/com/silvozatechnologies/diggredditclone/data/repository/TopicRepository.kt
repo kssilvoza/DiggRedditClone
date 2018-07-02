@@ -1,6 +1,5 @@
 package com.silvozatechnologies.diggredditclone.data.repository
 
-import android.util.Log
 import com.silvozatechnologies.diggredditclone.common.utility.generateRandomAlphanumericString
 import com.silvozatechnologies.diggredditclone.data.model.Topic
 import io.reactivex.subjects.ReplaySubject

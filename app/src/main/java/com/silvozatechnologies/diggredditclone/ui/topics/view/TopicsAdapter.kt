@@ -34,7 +34,7 @@ class TopicsAdapter(private val lifecycleOwner: LifecycleOwner, private val list
         }
 
         holder.viewModel.setTopicAndUpdate(topics[position])
-        
+
         val payload = payloads[0] as Bundle
         val votes = payload.getInt(TopicsDiffCallback.VOTES_CHANGE)
 

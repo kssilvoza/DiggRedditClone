@@ -8,7 +8,6 @@ import android.support.v7.app.AlertDialog
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
 import android.text.InputFilter
-import android.util.Log
 import android.widget.EditText
 import com.silvozatechnologies.diggredditclone.R
 import com.silvozatechnologies.diggredditclone.data.model.Topic
@@ -71,13 +70,11 @@ class TopicsActivity : AppCompatActivity() {
         addTopicDialog = AlertDialog.Builder(this)
                 .setTitle(title)
                 .setView(editText)
-                .setPositiveButton(R.string.button_add) {
-                    _, _ ->
-                        viewModel.addTopic(editText.text.toString())
+                .setPositiveButton(R.string.button_add) { _, _ ->
+                    viewModel.addTopic(editText.text.toString())
                 }
-                .setNegativeButton(R.string.button_cancel) {
-                    _, _ ->
-                        addTopicDialog.dismiss()
+                .setNegativeButton(R.string.button_cancel) { _, _ ->
+                    addTopicDialog.dismiss()
                 }
                 .create()
     }
