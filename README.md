@@ -14,6 +14,8 @@ Kotlin was used to develop the application
 
 ### Testing
 * __JUnit__ - Unit testing library for Java/Android Applications
+* __Mockito__ - Mocking framework for unit testing in Java/Android Applications 
+* __Powermock__ - Extends capabilities of mocking frameworks like Mockito
 
 ### Architecture
 This project follows the Model-View-ViewModel architecture because of the following reasons:
