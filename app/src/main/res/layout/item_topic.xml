@@ -4,62 +4,68 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:padding="@dimen/spacing_small">
+    android:layout_marginLeft="@dimen/spacing_small"
+    android:layout_marginRight="@dimen/spacing_small"
+    android:layout_marginTop="@dimen/spacing_small"
+    android:background="@color/white">
 
     <android.support.constraint.Guideline
         android:id="@+id/guideline"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        app:layout_constraintGuide_begin="@dimen/spacing_large"/>
+        app:layout_constraintGuide_begin="@dimen/spacing_large" />
 
     <TextView
         android:id="@+id/button_upvote"
         android:layout_width="0dp"
-        android:layout_height="30dp"
+        android:layout_height="40dp"
+        android:background="@color/light_gray"
         android:gravity="center"
-        android:textSize="@dimen/text_small"
         android:text="Up"
-        app:layout_constraintTop_toTopOf="parent"
+        android:textSize="@dimen/text_small"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="@+id/guideline"/>
+        app:layout_constraintRight_toRightOf="@+id/guideline"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/textview_votes"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/spacing_extra_small"
-        android:textSize="@dimen/text_normal"
+        android:background="@color/light_gray"
         android:gravity="center_horizontal"
-        tools:text="1.2k"
-        app:layout_constraintTop_toBottomOf="@+id/button_upvote"
+        android:textSize="@dimen/text_normal"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="@+id/guideline" />
+        app:layout_constraintRight_toRightOf="@+id/guideline"
+        app:layout_constraintTop_toBottomOf="@+id/button_upvote"
+        tools:text="1.2k" />
 
     <TextView
         android:id="@+id/button_downvote"
         android:layout_width="0dp"
-        android:layout_height="30dp"
-        android:layout_marginTop="@dimen/spacing_extra_small"
+        android:layout_height="40dp"
+        android:background="@color/light_gray"
         android:gravity="center"
-        android:textSize="@dimen/text_small"
         android:text="Down"
-        app:layout_constraintTop_toBottomOf="@+id/textview_votes"
+        android:textSize="@dimen/text_small"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="@+id/guideline" />
+        app:layout_constraintRight_toRightOf="@+id/guideline"
+        app:layout_constraintTop_toBottomOf="@+id/textview_votes" />
 
     <TextView
         android:id="@+id/textview_name"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:maxLines="2"
+        android:layout_marginLeft="@dimen/spacing_small"
+        android:layout_marginStart="@dimen/spacing_small"
         android:ellipsize="end"
+        android:maxLines="2"
         android:textSize="@dimen/text_large"
-        tools:text="Hero Discussion of the Day"
-        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="@+id/guideline"
-        app:layout_constraintRight_toRightOf="parent"/>
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="Hero Discussion of the Day" />
 
 </android.support.constraint.ConstraintLayout>
