@@ -9,6 +9,10 @@ import dagger.android.AndroidInjector
 import dagger.android.support.AndroidSupportInjectionModule
 import javax.inject.Singleton
 
+/*
+ * Main component of the application. Keeps track of modules that hold app wide objects.
+ * Examples of these objects include singletons like Repositories, APIs, and DAOs
+ */
 @Singleton
 @Component(modules = [
     AndroidSupportInjectionModule::class,

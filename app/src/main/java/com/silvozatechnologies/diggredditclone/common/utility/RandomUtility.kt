@@ -8,8 +8,9 @@ private const val ALPHANUMERIC = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghij
 private val secureRandom = SecureRandom()
 
 /*
-Logic obtain from this post:
-https://stackoverflow.com/questions/41107/how-to-generate-a-random-alpha-numeric-string
+ * Generates random alphanumeric strings. Used in creating ids for topics
+ * Logic obtain from this post:
+ * https://stackoverflow.com/questions/41107/how-to-generate-a-random-alpha-numeric-string
  */
 fun generateRandomAlphanumericString(length: Int) : String {
     val stringBuilder = StringBuilder()

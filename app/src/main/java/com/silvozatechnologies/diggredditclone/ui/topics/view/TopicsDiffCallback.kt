@@ -5,6 +5,14 @@ import android.support.v7.util.DiffUtil
 import android.util.Log
 import com.silvozatechnologies.diggredditclone.data.model.Topic
 
+/*
+ * This prevents us from having to call notifyDataSetChanged just to update the RecyclerView.
+ * It detects whether an item in the topics RecyclerView has totally changed or just its contents.
+ * If only the content has changed, it will only do a partial change to the RecyclerView
+ *
+ * Logic obtained here:
+ * https://android.jlelse.eu/android-dtt-12-animate-recyclerview-with-diffutil-cac02b229911
+ */
 class TopicsDiffCallback(private val oldTopics: List<Topic>, private val newTopics: List<Topic>) : DiffUtil.Callback() {
     override fun getOldListSize(): Int {
         return oldTopics.size
@@ -15,30 +23,14 @@ class TopicsDiffCallback(private val oldTopics: List<Topic>, private val newTopi
     }
 
     override fun areItemsTheSame(oldItemPosition: Int, newItemPosition: Int): Boolean {
-        val bool = oldTopics[oldItemPosition].id == newTopics[newItemPosition].id
-//        if (bool) {
-//            Log.d("TopicsDiffCallback", "Item Same = $oldItemPosition ${oldTopics[oldItemPosition].topicName} $newItemPosition = ${newTopics[newItemPosition].topicName}")
-//        }
         return oldTopics[oldItemPosition].id == newTopics[newItemPosition].id
     }
 
     override fun areContentsTheSame(oldItemPosition: Int, newItemPosition: Int): Boolean {
-        Log.d("TopicsDiffCallback", "OLD = $oldTopics")
-        Log.d("TopicsDiffCallback", "NEW = $newTopics")
-
-        Log.d("TopicsDiffCallback", "OLD position = $oldItemPosition name = ${oldTopics[oldItemPosition].topicName} votes = ${oldTopics[oldItemPosition].votes} NEW position = $newItemPosition name = ${newTopics[newItemPosition].topicName} votes = ${newTopics[newItemPosition].votes}")
-
-        val bool = oldTopics[oldItemPosition].topicName == newTopics[newItemPosition].topicName &&
-                oldTopics[oldItemPosition].votes == newTopics[newItemPosition].votes &&
-                oldTopics[oldItemPosition].lastUpdated == newTopics[newItemPosition].lastUpdated
-//        if (!bool) {
-//            Log.d("TopicsDiffCallback", "Content Same = $oldItemPosition ${oldTopics[oldItemPosition].topicName} ${oldTopics[oldItemPosition].votes} New = $newItemPosition ${newTopics[newItemPosition].topicName} ${newTopics[newItemPosition].votes}")
-//        }
-        return bool
+        return oldTopics[oldItemPosition] == newTopics[newItemPosition]
     }
 
     override fun getChangePayload(oldItemPosition: Int, newItemPosition: Int): Any? {
-        Log.d("TopicsDiffCallback", "getChangePayload")
         val oldTopic = oldTopics[oldItemPosition]
         val newTopic = newTopics[newItemPosition]
 

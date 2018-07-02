@@ -7,6 +7,10 @@ import dagger.Binds
 import dagger.Module
 import dagger.multibindings.IntoMap
 
+/*
+ * Topics activity wide module. Anything that should live within the scope of the TopicsActivity
+ * goes here. Thus, TopicsViewModel should be here
+ */
 @Module
 abstract class TopicsModule {
     @Binds

@@ -7,9 +7,9 @@ import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
-import org.mockito.junit.MockitoJUnitRunner
+import org.powermock.modules.junit4.PowerMockRunner
 
-@RunWith(MockitoJUnitRunner::class)
+@RunWith(PowerMockRunner::class)
 class TopicRepositoryTest {
     @Rule
     @JvmField
