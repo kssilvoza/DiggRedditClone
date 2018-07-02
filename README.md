@@ -53,4 +53,8 @@ The following section will discuss on how the topics are stored in the Model
 ### Data Structure
 The structure used by `TopicRepository` in storing the topics is a `HashMap` with the `topicId` as its key and a `Topic` as its value. This structure is used because adding and searching for a Topic in the `HashMap` will have O(1) complexity. 
 
-When a topic is added, it is added to the `HashMap` using the `put` method. On the other hand, when a topic is upvoted/downvoted, it will be searched in the `HashMap` using the `get` method. For adding and upvoting/downvoting, after updating the `HashMap`, its values are then obtained as a `List` using the `values` method. To ensure that the topics would be arranged properly, the `List` is then sorted using the `sortedWith` method.  
+When a topic is added, it is added to the `HashMap` using the `put` method. On the other hand, when a topic is upvoted/downvoted, it will be searched in the `HashMap` using the `get` method. For adding and upvoting/downvoting, after updating the `HashMap`, its values are then obtained as a `List` using the `values` method. To ensure that the topics would be arranged properly, the `List` is then sorted using the `sortedWith` method. Built-in sorting functions of Java/Kotlin utilizes a modified mergesort which has a time complexity of O(n log(n)). 
+
+Therefore, the topic operations have the following time complexities: 
+* Adding - O(n log(n))
+* Upvoting/Downvoting - O(n log(n))
