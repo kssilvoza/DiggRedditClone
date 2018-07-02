@@ -20,7 +20,7 @@ class TopicRepository {
 
     var topicsMap = mutableMapOf<String, Topic>()
 
-    fun addTopic(topicName: String) : String {
+    fun addTopic(topicName: String): String {
         val id = generateId()
         val lastUpdated = System.currentTimeMillis()
         val topic = Topic(id = id, topicName = topicName, votes = 0, lastUpdated = lastUpdated)
@@ -52,26 +52,32 @@ class TopicRepository {
      * a tie, it is sorted from newest to oldest (updated)
      */
     private fun updateTopicsObservable() {
-        Log.d("TopicsAdapter", "TopicRepository updateTopicsObservable")
-
-        val sortedTopics = topicsMap.values.sortedWith(Comparator {
-            o1, o2 ->
-                if (o1.votes > o2.votes) {
-                    -1
-                } else if (o1.votes == o2.votes) {
-                    if (o1.lastUpdated > o2.lastUpdated) -1 else 1
-                } else {
-                    1
-                }
+        val sortedTopics = topicsMap.values.sortedWith(Comparator { o1, o2 ->
+            if (o1.votes > o2.votes) {
+                -1
+            } else if (o1.votes == o2.votes) {
+                if (o1.lastUpdated > o2.lastUpdated) -1 else 1
+            } else {
+                1
+            }
         })
-        topicsObservable.onNext(sortedTopics)
+        topicsObservable.onNext(copyTopics(sortedTopics))
     }
 
-    private fun generateId() : String {
+    private fun generateId(): String {
         var id: String
         do {
             id = generateRandomAlphanumericString(length = 40)
         } while (topicsMap.containsKey(key = id))
         return id
+    }
+
+    private fun copyTopics(topics: List<Topic>): MutableList<Topic> {
+        val topicsCopy = mutableListOf<Topic>()
+        for (topic in topics) {
+            val topicCopy = Topic(id = topic.id, topicName = topic.topicName, votes = topic.votes, lastUpdated = topic.lastUpdated)
+            topicsCopy.add(topicCopy)
+        }
+        return topicsCopy
     }
 }

@@ -3,7 +3,6 @@ package com.silvozatechnologies.diggredditclone.ui.topics.view
 import android.arch.lifecycle.Observer
 import android.arch.lifecycle.ViewModelProvider
 import android.arch.lifecycle.ViewModelProviders
-import android.content.DialogInterface
 import android.os.Bundle
 import android.support.v7.app.AlertDialog
 import android.support.v7.app.AppCompatActivity
@@ -92,8 +91,6 @@ class TopicsActivity : AppCompatActivity() {
     }
 
     private fun onTopicsChanged(topics: List<Topic>?) {
-        Log.d("TopicsAdapter", "TopicsActivity onTopicsChanged")
-
         if (topics != null) {
             topicsAdapter.setTopics(topics)
         }

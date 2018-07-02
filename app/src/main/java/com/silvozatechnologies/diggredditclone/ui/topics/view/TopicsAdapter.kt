@@ -5,7 +5,6 @@ import android.arch.lifecycle.Observer
 import android.os.Bundle
 import android.support.v7.util.DiffUtil
 import android.support.v7.widget.RecyclerView
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -29,22 +28,17 @@ class TopicsAdapter(private val lifecycleOwner: LifecycleOwner, private val list
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int, payloads: MutableList<Any>) {
-        Log.d("TopicsAdapter","Payload: $payloads")
-
         if (payloads.isEmpty()) {
             onBindViewHolder(holder, position)
             return
         }
 
+        holder.viewModel.setTopicAndUpdate(topics[position])
+        
         val payload = payloads[0] as Bundle
         val votes = payload.getInt(TopicsDiffCallback.VOTES_CHANGE)
 
-        Log.d("TopicsAdapter","Votes: $votes")
-
-        holder.viewModel.setTopicAndUpdate(topics[position])
-
 //        val payload = payloads[0] as Bundle
-//
 //
 //        if (payload.containsKey(TopicsDiffCallback.TOPIC_NAME_CHANGE)) {
 //            val topicName = payload.getString(TopicsDiffCallback.TOPIC_NAME_CHANGE)
@@ -71,21 +65,12 @@ class TopicsAdapter(private val lifecycleOwner: LifecycleOwner, private val list
     }
 
     fun setTopics(topics: List<Topic>) {
-        /*
-         * TODO Make use of diffUtil properly
-         * https://android.jlelse.eu/android-dtt-12-animate-recyclerview-with-diffutil-cac02b229911
-         */
-
-        Log.d("TopicsAdapter", "Old = ${this.topics}")
-        Log.d("TopicsAdapter", "New = $topics")
-
         val topicsDiffCallback = TopicsDiffCallback(this.topics, topics)
         val diffResult = DiffUtil.calculateDiff(topicsDiffCallback)
 
         this.topics.clear()
         this.topics.addAll(topics)
         diffResult.dispatchUpdatesTo(this)
-//        notifyDataSetChanged()
     }
 
     class ViewHolder(itemView: View, lifecycleOwner: LifecycleOwner, private val listener: Listener) : RecyclerView.ViewHolder(itemView) {
