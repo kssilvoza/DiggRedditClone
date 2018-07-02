@@ -53,7 +53,6 @@ class TopicsViewModel @Inject constructor(private val topicsRepository: TopicRep
     }
 
     private fun onTopicsChanged(topics: List<Topic>) {
-        Log.d("TopicsAdapter", "TopicsViewModel onTopicsChanged")
         this.topics.value = topics
     }
 }
