@@ -34,26 +34,6 @@ class TopicsAdapter(private val lifecycleOwner: LifecycleOwner, private val list
         }
 
         holder.viewModel.setTopicAndUpdate(topics[position])
-
-        val payload = payloads[0] as Bundle
-        val votes = payload.getInt(TopicsDiffCallback.VOTES_CHANGE)
-
-//        val payload = payloads[0] as Bundle
-//
-//        if (payload.containsKey(TopicsDiffCallback.TOPIC_NAME_CHANGE)) {
-//            val topicName = payload.getString(TopicsDiffCallback.TOPIC_NAME_CHANGE)
-//
-//        }
-//
-//        if (payload.containsKey(TopicsDiffCallback.VOTES_CHANGE)) {
-//            val votes = payload.getInt(TopicsDiffCallback.VOTES_CHANGE)
-//
-//        }
-//
-//        if (payload.containsKey(TopicsDiffCallback.LAST_UPDATED_CHANGE)) {
-//            val lastUpdated = payload.getLong(TopicsDiffCallback.LAST_UPDATED_CHANGE)
-//
-//        }
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
