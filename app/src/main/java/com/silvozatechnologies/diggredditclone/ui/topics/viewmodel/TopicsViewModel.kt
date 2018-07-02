@@ -43,12 +43,12 @@ class TopicsViewModel @Inject constructor(private val topicsRepository: TopicRep
         }
     }
 
-    fun upvoteTopic(topic: Topic) {
-        topicsRepository.upvoteTopic(topic.id)
+    fun upvoteTopic(topicId: String) {
+        topicsRepository.upvoteTopic(topicId)
     }
 
-    fun downvoteTopic(topic: Topic) {
-        topicsRepository.downvoteTopic(topic.id)
+    fun downvoteTopic(topicId: String) {
+        topicsRepository.downvoteTopic(topicId)
     }
 
     private fun onTopicsChanged(topics: List<Topic>) {

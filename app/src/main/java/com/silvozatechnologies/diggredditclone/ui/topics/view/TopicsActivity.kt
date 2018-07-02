@@ -28,11 +28,11 @@ class TopicsActivity : AppCompatActivity() {
 
     private val listener = object : TopicsAdapter.Listener {
         override fun onUpvoteClicked(topic: Topic) {
-            viewModel.upvoteTopic(topic)
+            viewModel.upvoteTopic(topic.id)
         }
 
         override fun onDownvoteClicked(topic: Topic) {
-            viewModel.downvoteTopic(topic)
+            viewModel.downvoteTopic(topic.id)
         }
     }
 

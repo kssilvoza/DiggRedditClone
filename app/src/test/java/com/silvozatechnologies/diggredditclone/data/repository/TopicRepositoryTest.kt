@@ -29,7 +29,7 @@ class TopicRepositoryTest {
     }
 
     @Test
-    fun addTopic_shouldAddTopic() {
+    fun addTopic_topicShouldBeAdded() {
         val testObserver = TestObserver<List<Topic>>()
         val topicName = "Topic Name"
 
@@ -50,7 +50,7 @@ class TopicRepositoryTest {
     }
 
     @Test
-    fun addTopic_shouldIdsBeRandomAlphanumeric() {
+    fun addTopic_idsShouldBeRandomAlphanumeric() {
         val topicName1 = "Topic Name 1"
         val topicName2 = "Topic Name 2"
 
@@ -61,7 +61,7 @@ class TopicRepositoryTest {
     }
 
     @Test
-    fun addTopic_shouldTopicsInOrder() {
+    fun addTopic_topicsShouldBeInOrder() {
         val testObserver = TestObserver<List<Topic>>()
 
         topicRepository.topicsMap = dummyTopics
@@ -78,7 +78,7 @@ class TopicRepositoryTest {
     }
 
     @Test
-    fun upvoteTopic_shouldTopicsInOrder() {
+    fun upvoteTopic_topicsShouldBeInOrder() {
         val testObserver = TestObserver<List<Topic>>()
 
         topicRepository.topicsMap = dummyTopics
@@ -95,7 +95,7 @@ class TopicRepositoryTest {
     }
 
     @Test
-    fun downvoteTopic_shouldTopicsInOrder() {
+    fun downvoteTopic_topicsShouldBeInOrder() {
         val testObserver = TestObserver<List<Topic>>()
 
         topicRepository.topicsMap = dummyTopics
