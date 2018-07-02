@@ -17,17 +17,17 @@
         android:orientation="vertical"
         app:layout_constraintGuide_begin="@dimen/spacing_large" />
 
-    <TextView
+    <ImageView
         android:id="@+id/button_upvote"
         android:layout_width="0dp"
-        android:layout_height="40dp"
+        android:layout_height="@dimen/button_height_normal"
         android:background="@color/light_gray"
+        android:contentDescription="@null"
         android:gravity="center"
-        android:text="Up"
-        android:textSize="@dimen/text_small"
+        android:src="@drawable/ic_upvote_selector"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="@+id/guideline"
-        app:layout_constraintTop_toTopOf="parent"/>
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/textview_votes"
@@ -41,14 +41,14 @@
         app:layout_constraintTop_toBottomOf="@+id/button_upvote"
         tools:text="1.2k" />
 
-    <TextView
+    <ImageView
         android:id="@+id/button_downvote"
         android:layout_width="0dp"
-        android:layout_height="40dp"
+        android:layout_height="@dimen/button_height_normal"
         android:background="@color/light_gray"
+        android:contentDescription="@null"
         android:gravity="center"
-        android:text="Down"
-        android:textSize="@dimen/text_small"
+        android:src="@drawable/ic_downvote_selector"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="@+id/guideline"
