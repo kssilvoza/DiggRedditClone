@@ -8,12 +8,14 @@ import android.support.v7.app.AlertDialog
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
 import android.text.InputFilter
+import android.view.LayoutInflater
 import android.widget.EditText
 import com.silvozatechnologies.diggredditclone.R
 import com.silvozatechnologies.diggredditclone.data.model.Topic
 import com.silvozatechnologies.diggredditclone.ui.topics.viewmodel.TopicsViewModel
 import dagger.android.AndroidInjection
 import kotlinx.android.synthetic.main.activity_topic.*
+import kotlinx.android.synthetic.main.view_edit_text.view.*
 import javax.inject.Inject
 
 class TopicsActivity : AppCompatActivity() {
@@ -61,17 +63,17 @@ class TopicsActivity : AppCompatActivity() {
     }
 
     private fun initializeDialog() {
-        val title = resources.getString(R.string.add_topic_dialog_title)
-
-        val editText = EditText(this)
-        editText.setHint(R.string.add_topic_dialog_hint)
+        val layoutInflater = LayoutInflater.from(this)
+        val view = layoutInflater.inflate(R.layout.view_edit_text, null, false)
+        val editText = view.edittext
         editText.filters = arrayOf(InputFilter.LengthFilter(viewModel.TOPIC_NAME_MAX_LENGTH))
 
         addTopicDialog = AlertDialog.Builder(this)
-                .setTitle(title)
-                .setView(editText)
+                .setTitle(R.string.add_topic_dialog_title)
+                .setView(view)
                 .setPositiveButton(R.string.button_add) { _, _ ->
-                    viewModel.addTopic(editText.text.toString())
+                    viewModel.addTopic(topicName = editText.text.toString())
+                    editText.text.clear()
                 }
                 .setNegativeButton(R.string.button_cancel) { _, _ ->
                     addTopicDialog.dismiss()

@@ -79,6 +79,14 @@ class TopicsViewModelTest {
     }
 
     @Test
+    fun addTopic_topicWithEmptyNameShouldNotBeAdded() {
+        val topicName = ""
+        emptyTopicsViewModel.topics.observeForever(topicsObserver)
+        emptyTopicsViewModel.addTopic(topicName)
+        Mockito.verify(topicsObserver, never()).onChanged(Mockito.anyList())
+    }
+
+    @Test
     fun addTopic_topicWithLongNameShouldNotBeAdded() {
         val topicName = "YLqpm55qk01SWh21dt6yzCDz8AoNLaHHoStAYxz9zCbJLzy4ZalIHODFQDPuPxUbxZkOem51nA2BTrIuXkq6UzOkXe3Q9d0D2v3ikOIvjfSHyYNQzVt4VrB02izOYanRXoKSi1y5QsrmYYfQpB9k8RJ6yrqY3vB7mpsvWyazab5oZEIFbnsY3LWoajZj4iT8FMyPJLnQXAHafXa47dfV7ZbfSZ22tGDNxacYfXhmFeb5AaEp15ljEPiSI392U58r"
         emptyTopicsViewModel.topics.observeForever(topicsObserver)
