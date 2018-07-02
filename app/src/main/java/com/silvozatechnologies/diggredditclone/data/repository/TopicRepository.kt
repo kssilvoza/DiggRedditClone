@@ -1,5 +1,6 @@
 package com.silvozatechnologies.diggredditclone.data.repository
 
+import android.util.Log
 import com.silvozatechnologies.diggredditclone.common.utility.generateRandomAlphanumericString
 import com.silvozatechnologies.diggredditclone.data.model.Topic
 import io.reactivex.subjects.ReplaySubject
@@ -51,6 +52,8 @@ class TopicRepository {
      * a tie, it is sorted from newest to oldest (updated)
      */
     private fun updateTopicsObservable() {
+        Log.d("TopicsAdapter", "TopicRepository updateTopicsObservable")
+
         val sortedTopics = topicsMap.values.sortedWith(Comparator {
             o1, o2 ->
                 if (o1.votes > o2.votes) {

@@ -2,6 +2,7 @@ package com.silvozatechnologies.diggredditclone.ui.topics.viewmodel
 
 import android.arch.lifecycle.MutableLiveData
 import android.arch.lifecycle.ViewModel
+import android.util.Log
 import com.silvozatechnologies.diggredditclone.data.model.Topic
 import com.silvozatechnologies.diggredditclone.data.repository.TopicRepository
 import io.reactivex.android.schedulers.AndroidSchedulers
@@ -52,6 +53,7 @@ class TopicsViewModel @Inject constructor(private val topicsRepository: TopicRep
     }
 
     private fun onTopicsChanged(topics: List<Topic>) {
+        Log.d("TopicsAdapter", "TopicsViewModel onTopicsChanged")
         this.topics.value = topics
     }
 }
